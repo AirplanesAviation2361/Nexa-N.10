@@ -17,7 +17,7 @@ app.use(express.json());
    HEALTH CHECK
 ====================== */
 app.get("/", (req, res) => {
-    res.send("🤖 Nexa N.20 is running securely.");
+    res.send("🤖 Nexa N.10 is running securely.");
 });
 
 /* ======================
@@ -47,7 +47,7 @@ app.post("/chat", async (req, res) => {
                     {
                         role: "system",
                         content: `
-You are Nexa N.20, an advanced AI assistant.
+You are Nexa N.10, an advanced AI assistant.
 
 You have:
 - Memory awareness
@@ -108,5 +108,5 @@ Use the memory context if provided by the user.
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`🤖 Nexa N.20 running on port ${PORT}`);
+    console.log(`🤖 Nexa N.10 running on port ${PORT}`);
 });
