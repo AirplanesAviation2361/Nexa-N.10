@@ -1,172 +1,493 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
+
 <head>
+
 <meta charset="UTF-8">
-<title>Nexa N.10</title>
+
+<title>Nexa N.20</title>
+
 
 <style>
-body {
-    margin: 0;
-    font-family: system-ui, Arial;
-    background: #0f0f10;
-    color: white;
-    display: flex;
-    height: 100vh;
+
+body{
+
+margin:0;
+font-family:Arial;
+background:#0f0f10;
+color:white;
+height:100vh;
+display:flex;
+
 }
 
-/* SIDEBAR */
-.sidebar {
-    width: 220px;
-    background: #1a1a1c;
-    padding: 15px;
+
+.sidebar{
+
+width:220px;
+background:#1a1a1c;
+padding:15px;
+
 }
 
-.sidebar h2 {
-    font-size: 18px;
-    color: #ff9800;
+
+.sidebar h2{
+
+color:#ff9800;
+
 }
 
-/* CHAT AREA */
-.chat-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+
+
+.chat-container{
+
+flex:1;
+display:flex;
+flex-direction:column;
+
 }
 
-.chat {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+
+
+.chat{
+
+flex:1;
+padding:20px;
+overflow:auto;
+
+display:flex;
+flex-direction:column;
+gap:12px;
+
 }
 
-/* MESSAGES */
-.msg {
-    max-width: 70%;
-    padding: 12px 14px;
-    border-radius: 12px;
-    line-height: 1.4;
-    white-space: pre-wrap;
+
+
+.msg{
+
+max-width:70%;
+padding:12px;
+border-radius:12px;
+white-space:pre-wrap;
+
 }
 
-.user {
-    align-self: flex-end;
-    background: #2b7cff;
+
+
+.user{
+
+align-self:flex-end;
+background:#2b7cff;
+
 }
 
-.nexa {
-    align-self: flex-start;
-    background: #2a2a2a;
-    border: 1px solid #333;
+
+
+.nexa{
+
+align-self:flex-start;
+background:#292929;
+
 }
 
-/* INPUT BAR */
-.input-bar {
-    display: flex;
-    padding: 15px;
-    background: #151517;
-    border-top: 1px solid #2a2a2a;
+
+
+.input-bar{
+
+display:flex;
+padding:15px;
+background:#151517;
+gap:10px;
+
 }
 
-input {
-    flex: 1;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    background: #222;
-    color: white;
+
+
+input{
+
+flex:1;
+padding:12px;
+border-radius:8px;
+background:#222;
+color:white;
+border:none;
+
 }
 
-button {
-    margin-left: 10px;
-    padding: 12px 16px;
-    border: none;
-    border-radius: 8px;
-    background: #ff9800;
-    cursor: pointer;
-    font-weight: bold;
+
+
+button{
+
+background:#ff9800;
+border:none;
+border-radius:8px;
+padding:12px;
+cursor:pointer;
+
 }
 
-button:hover {
-    background: #ffa733;
+
+
+/* PLUS MENU */
+
+
+.plus-container{
+
+position:relative;
+
 }
 
-/* TITLE */
-.title {
-    font-size: 20px;
-    margin-bottom: 10px;
+
+
+.menu{
+
+display:none;
+
+position:absolute;
+
+bottom:60px;
+
+background:#222;
+
+width:230px;
+
+padding:10px;
+
+border-radius:12px;
+
 }
+
+
+.menu button{
+
+display:block;
+
+width:100%;
+
+margin:5px 0;
+
+background:#333;
+
+color:white;
+
+}
+
+
+.menu.show{
+
+display:block;
+
+}
+
+
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- SIDEBAR -->
+
+
 <div class="sidebar">
-    <h2>🤖 Nexa N.10</h2>
-    <p>ChatGPT-style UI</p>
-    <p>Secure AI Assistant</p>
+
+<h2>🤖 Nexa N.20</h2>
+
+<p>AI Assistant</p>
+
+<p>Voice + Files</p>
+
 </div>
 
-<!-- CHAT -->
+
+
+
 <div class="chat-container">
 
-    <div class="chat" id="chat"></div>
 
-    <div class="input-bar">
-        <input id="msg" placeholder="Message Nexa...">
-        <button onclick="send()">Send</button>
-    </div>
+<div class="chat" id="chat">
 
 </div>
 
+
+
+<div class="input-bar">
+
+
+
+<div class="plus-container">
+
+
+<button id="plusBtn">
++
+</button>
+
+
+<div class="menu" id="menu">
+
+
+<button>
+📸 Add Photos & Files
+</button>
+
+
+<button>
+🕒 Recent Files
+</button>
+
+
+<button>
+🎨 Create Image
+</button>
+
+
+<button onclick="setMode('thinking')">
+🧠 Thinking
+</button>
+
+
+<button onclick="setMode('research')">
+🔬 Deep Research
+</button>
+
+
+<button onclick="setMode('web')">
+🌐 Web Search
+</button>
+
+
+<button disabled>
+✨ More Features (N.50)
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<input
+id="msg"
+placeholder="Message Nexa..."
+>
+
+
+
+<button id="micBtn">
+🎤
+</button>
+
+
+<button onclick="send()">
+Send
+</button>
+
+
+
+<input
+type="file"
+id="fileInput"
+hidden
+>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
 <script>
-const chat = document.getElementById("chat");
 
-/* ADD MESSAGE */
-function addMsg(text, type) {
-    const div = document.createElement("div");
-    div.className = "msg " + type;
-    div.innerText = text;
-    chat.appendChild(div);
-    chat.scrollTop = chat.scrollHeight;
+
+const chat =
+document.getElementById("chat");
+
+
+let currentMode="normal";
+
+
+
+function addMsg(text,type){
+
+
+let div =
+document.createElement("div");
+
+
+div.className =
+"msg "+type;
+
+
+div.innerText=text;
+
+
+chat.appendChild(div);
+
+
+chat.scrollTop =
+chat.scrollHeight;
+
+
 }
 
-/* SEND MESSAGE */
-async function send() {
-    const input = document.getElementById("msg");
-    const message = input.value.trim();
 
-    if (!message) return;
 
-    addMsg(message, "user");
-    input.value = "";
 
-    addMsg("Nexa is thinking...", "nexa");
 
-    try {
-        const res = await fetch("http://localhost:3000/chat", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ message })
-        });
+function setMode(mode){
 
-        const data = await res.json();
+currentMode=mode;
 
-        chat.lastChild.remove(); // remove "thinking"
-        addMsg(data.reply, "nexa");
+addMsg(
+"Nexa mode: "+mode,
+"nexa"
+);
 
-    } catch (err) {
-        chat.lastChild.remove();
-        addMsg("Error connecting to Nexa server.", "nexa");
-    }
 }
+
+
+
+
+
+async function send(){
+
+
+let input =
+document.getElementById("msg");
+
+
+let message =
+input.value.trim();
+
+
+
+if(!message)return;
+
+
+
+addMsg(message,"user");
+
+input.value="";
+
+
+
+addMsg(
+"Nexa is thinking...",
+"nexa"
+);
+
+
+
+const res =
+await fetch(
+"http://localhost:3000/chat",
+{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+
+body:JSON.stringify({
+
+message,
+
+mode:currentMode
+
+})
+
+
+});
+
+
+
+const data =
+await res.json();
+
+
+
+chat.lastChild.remove();
+
+
+addMsg(
+data.reply,
+"nexa"
+);
+
+
+
+}
+
+
+
+
+// PLUS MENU
+
+
+plusBtn.onclick=()=>{
+
+menu.classList.toggle("show");
+
+};
+
+
+
+
+
+// VOICE
+
+
+const SpeechRecognition =
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
+
+
+if(SpeechRecognition){
+
+
+const recognition =
+new SpeechRecognition();
+
+
+
+micBtn.onclick=()=>{
+
+recognition.start();
+
+};
+
+
+
+recognition.onresult=(e)=>{
+
+
+msg.value =
+e.results[0][0].transcript;
+
+
+};
+
+
+}
+
+
+
 </script>
 
+
 </body>
+
 </html>
